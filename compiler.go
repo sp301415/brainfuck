@@ -55,5 +55,9 @@ func Compile(code string) (Program, error) {
 		}
 	}
 
+	if len(jumpStack) > 0 {
+		return nil, errors.New("mismatched brackets")
+	}
+
 	return program, nil
 }
