@@ -1,17 +1,11 @@
 package brainfuck
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 )
-
-var stdout = bufio.NewWriterSize(os.Stdout, 8192)
 
 // Execute executes a Program.
 func Execute(code Program) {
-	defer stdout.Flush()
-
 	MEM := [30000]int{}
 	ptr := 0
 
@@ -25,7 +19,7 @@ func Execute(code Program) {
 		case Scan:
 			fmt.Scanf("%c", &MEM[ptr])
 		case Print:
-			fmt.Fprintf(stdout, "%c", MEM[ptr])
+			fmt.Printf("%c", MEM[ptr])
 		case JumpIf:
 			if MEM[ptr] == 0 {
 				pc = instruction.Operand
