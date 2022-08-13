@@ -5,12 +5,12 @@ import (
 )
 
 // Execute executes a Program.
-func Execute(code Program) {
+func Execute(program Program) {
 	MEM := [30000]int{}
 	ptr := 0
 
-	for pc := 0; pc < len(code); pc++ {
-		instruction := code[pc]
+	for pc := 0; pc < len(program); pc++ {
+		instruction := program[pc]
 		switch instruction.Type {
 		case ChangePtr:
 			ptr += instruction.Operand
