@@ -14,13 +14,13 @@ func main() {
 		fmt.Print(">>> ")
 		code, err := stdin.ReadString('\n')
 		if err != nil {
-			fmt.Println("Error:", err)
+			fmt.Fprintln(os.Stderr, "Error:", err)
 			continue
 		}
 
 		program, err := brainfuck.Compile(code)
 		if err != nil {
-			fmt.Println("Error:", err)
+			fmt.Fprintln(os.Stderr, "Error:", err)
 			continue
 		}
 
